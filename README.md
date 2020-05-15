@@ -1,6 +1,6 @@
 # Learn Provider with Qiita
 
 
-![home](./sample/hone.png)
+![home](./sample/home.png)
 
 ![second](./sample/second.png)
