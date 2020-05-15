@@ -11,7 +11,7 @@ class Qiita {
   }
 
   Future<http.Response> fetchUserArticles() {
-    return http.get(url + '/users/' + userName + '/items');
+    return http.get(url + '/users/' + userName + '/items?per_page=100');
   }
 
 }
