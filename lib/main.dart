@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:qiitaarticles/Pages/ArticlesPage.dart';
 import 'package:qiitaarticles/Providers/UserProvider.dart';
 
-void main() => runApp(ChangeNotifierProvider<UserProvider>(
-      create: (context) => UserProvider(),
+void main() => runApp(ChangeNotifierProvider<UserNotifier>(
+      create: (context) => UserNotifier(),
       child: MaterialApp(
         home: HomePage(),
         debugShowCheckedModeBanner: false,
@@ -21,10 +21,10 @@ class _HomePageState extends State<HomePage> {
 
   void _getArticles() {
     if (_controller.text == '') {
-      Provider.of<UserProvider>(context, listen: false)
+      Provider.of<UserNotifier>(context, listen: false)
           .setMessage(('Please enter your username'));
     } else {
-      Provider.of<UserProvider>(context, listen: false)
+      Provider.of<UserNotifier>(context, listen: false)
           .fetchUser(_controller.text)
           .then((value) {
         if (value) {
@@ -78,17 +78,17 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: TextField(
                   onChanged: (value) {
-                    Provider.of<UserProvider>(context, listen: false)
+                    Provider.of<UserNotifier>(context, listen: false)
                         .setMessage(null);
                   },
                   controller: _controller,
-                  enabled: !Provider.of<UserProvider>(context, listen: false)
+                  enabled: !Provider.of<UserNotifier>(context, listen: false)
                       .isLoading(),
                   style: TextStyle(
                     color: Colors.white,
                   ),
                   decoration: InputDecoration(
-                    errorText: Provider.of<UserProvider>(context, listen: false)
+                    errorText: Provider.of<UserNotifier>(context, listen: false)
                         .getMessage(),
                     border: InputBorder.none,
                     hintText: "Qiita username",
@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Align(
-                  child: Provider.of<UserProvider>(context, listen: false)
+                  child: Provider.of<UserNotifier>(context, listen: false)
                           .isLoading()
                       ? CircularProgressIndicator(
                           backgroundColor: Colors.white,
