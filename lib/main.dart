@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qiitaarticles/Pages/ArticlesPage.dart';
-import 'package:qiitaarticles/Providers/UserProvider.dart';
+import 'package:qiitaarticles/Providers/user_nortifier.dart';
 
 void main() => runApp(ChangeNotifierProvider<UserNotifier>(
       create: (context) => UserNotifier(),

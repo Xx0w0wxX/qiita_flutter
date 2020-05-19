@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:qiitaarticles/Models/Article.dart';
 import 'package:qiitaarticles/Models/User.dart';
-import 'package:qiitaarticles/Providers/UserProvider.dart';
+import 'package:qiitaarticles/Providers/user_nortifier.dart';
 import 'package:qiitaarticles/Requests/QiitaRequest.dart';
 
 class ArticlesPage extends StatefulWidget {
