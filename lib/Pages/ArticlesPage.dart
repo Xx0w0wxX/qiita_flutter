@@ -7,13 +7,13 @@ import 'package:qiitaarticles/Models/User.dart';
 import 'package:qiitaarticles/Providers/UserProvider.dart';
 import 'package:qiitaarticles/Requests/QiitaRequest.dart';
 
-
 class ArticlesPage extends StatefulWidget {
   @override
   _ArticlesPageState createState() => _ArticlesPageState();
 }
 
-class _ArticlesPageState extends State<ArticlesPage> with SingleTickerProviderStateMixin {
+class _ArticlesPageState extends State<ArticlesPage>
+    with SingleTickerProviderStateMixin {
   User user;
   Article article;
   List<Article> articles;
@@ -33,8 +33,10 @@ class _ArticlesPageState extends State<ArticlesPage> with SingleTickerProviderSt
     super.initState();
     _controller = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(begin: 1, end: 0.6).animate(_controller);
-    _scaleScaleAnimation = Tween<double>(begin: 0.5, end: 1).animate(_controller);
-    _slideAnimation = Tween<Offset>(begin: Offset(-1, 0), end: Offset(0, 0)).animate(_controller);
+    _scaleScaleAnimation =
+        Tween<double>(begin: 0.5, end: 1).animate(_controller);
+    _slideAnimation = Tween<Offset>(begin: Offset(-1, 0), end: Offset(0, 0))
+        .animate(_controller);
   }
 
   @override
@@ -95,9 +97,16 @@ class _ArticlesPageState extends State<ArticlesPage> with SingleTickerProviderSt
                     backgroundImage: NetworkImage(user.profileImageUrl),
                   ),
                 ),
-                SizedBox(height: 20,),
-                Text(user.name, style: TextStyle(fontSize: 20),),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  user.name,
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
                   width: 250,
                   decoration: BoxDecoration(
@@ -106,8 +115,7 @@ class _ArticlesPageState extends State<ArticlesPage> with SingleTickerProviderSt
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),
                         bottomLeft: Radius.circular(50),
-                        bottomRight: Radius.circular(50)
-                    ),
+                        bottomRight: Radius.circular(50)),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.5),
@@ -120,24 +128,56 @@ class _ArticlesPageState extends State<ArticlesPage> with SingleTickerProviderSt
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      SizedBox(height: 20,),
-                      Icon(Icons.mood, color: Colors.deepOrangeAccent,),
-                      Text(user.followeesCount.toString(), style: TextStyle(fontSize: 20),),
-                      SizedBox(height: 20,),
-                      Icon(Icons.opacity, color: Colors.deepOrangeAccent,),
-                      Text(user.followersCount.toString(), style: TextStyle(fontSize: 20),),
-                      SizedBox(height: 20,),
-                      Icon(Icons.note, color: Colors.black38,),
-                      Text(user.itemsCount.toString(), style: TextStyle(fontSize: 20),),
-                      SizedBox(height: 20,),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Icon(
+                        Icons.mood,
+                        color: Colors.deepOrangeAccent,
+                      ),
+                      Text(
+                        user.followeesCount.toString(),
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Icon(
+                        Icons.opacity,
+                        color: Colors.deepOrangeAccent,
+                      ),
+                      Text(
+                        user.followersCount.toString(),
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Icon(
+                        Icons.note,
+                        color: Colors.black38,
+                      ),
+                      Text(
+                        user.itemsCount.toString(),
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
                     ],
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 IconButton(
-                  icon: Icon(Icons.home, color: Colors.grey,), onPressed: () {
-                  Navigator.pop(context);
-                },
+                  icon: Icon(
+                    Icons.home,
+                    color: Colors.grey,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
               ],
             ),
@@ -172,7 +212,10 @@ class _ArticlesPageState extends State<ArticlesPage> with SingleTickerProviderSt
                     mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
                       InkWell(
-                        child: Icon(Icons.arrow_back_ios, color: Colors.grey,),
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.grey,
+                        ),
                         onTap: () {
                           setState(() {
                             if (isCollapsed)
@@ -183,29 +226,35 @@ class _ArticlesPageState extends State<ArticlesPage> with SingleTickerProviderSt
                           });
                         },
                       ),
-                      Text(user.name, style: TextStyle(fontSize: 20),),
+                      Text(
+                        user.name,
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ],
                   ),
                   Container(
-                      height: 700,
-                      child:
-                      articles != null ?
-                          ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              itemCount: articles.length,
+                    height: 700,
+                    child: articles != null
+                        ? ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: articles.length,
                             itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
                                     padding: EdgeInsets.all(15),
                                     decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey[200])),
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.grey[200])),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.lightGreen.withOpacity(0.5),
+                                          color: Colors.lightGreen
+                                              .withOpacity(0.5),
                                           spreadRadius: 5,
                                           blurRadius: 7,
-                                          offset: Offset(0, 3), // changes position of shadow
+                                          offset: Offset(0,
+                                              3), // changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -217,27 +266,48 @@ class _ArticlesPageState extends State<ArticlesPage> with SingleTickerProviderSt
                                           },
                                           child: Container(
                                             width: 400,
-                                            child: Text(articles[index].title, style: TextStyle(fontSize: 12.0),),
+                                            child: Text(
+                                              articles[index].title,
+                                              style: TextStyle(fontSize: 12.0),
+                                            ),
                                           ),
                                         ),
-                                        SizedBox(height: 5.0,),
+                                        SizedBox(
+                                          height: 5.0,
+                                        ),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
                                           children: <Widget>[
-                                            Icon(Icons.favorite, color: Colors.pink,),
-                                            Text(articles[index].likesCount.toString(), style: TextStyle(fontSize: 10.0),),
-                                            Icon(Icons.comment, color: Colors.black38,),
-                                            Text(articles[index].commentsCount.toString(), style: TextStyle(fontSize: 10.0),),
+                                            Icon(
+                                              Icons.favorite,
+                                              color: Colors.pink,
+                                            ),
+                                            Text(
+                                              articles[index]
+                                                  .likesCount
+                                                  .toString(),
+                                              style: TextStyle(fontSize: 10.0),
+                                            ),
+                                            Icon(
+                                              Icons.comment,
+                                              color: Colors.black38,
+                                            ),
+                                            Text(
+                                              articles[index]
+                                                  .commentsCount
+                                                  .toString(),
+                                              style: TextStyle(fontSize: 10.0),
+                                            ),
                                           ],
                                         )
                                       ],
-                                    )
-                                  ),
-                                );
+                                    )),
+                              );
                             },
-                          ) :
-                      Container(child: Align(child: Text('Loading...'))),
-                    ),
+                          )
+                        : Container(child: Align(child: Text('Loading...'))),
+                  ),
                 ],
               ),
             ),
@@ -247,4 +317,3 @@ class _ArticlesPageState extends State<ArticlesPage> with SingleTickerProviderSt
     );
   }
 }
-

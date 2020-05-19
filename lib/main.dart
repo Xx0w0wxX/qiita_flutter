@@ -3,15 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:qiitaarticles/Pages/ArticlesPage.dart';
 import 'package:qiitaarticles/Providers/UserProvider.dart';
 
-void main() => runApp(
-    ChangeNotifierProvider<UserProvider>(
+void main() => runApp(ChangeNotifierProvider<UserProvider>(
       create: (context) => UserProvider(),
       child: MaterialApp(
         home: HomePage(),
         debugShowCheckedModeBanner: false,
       ),
-  )
-);
+    ));
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,16 +17,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   TextEditingController _controller = TextEditingController();
 
   void _getArticles() {
     if (_controller.text == '') {
-      Provider.of<UserProvider>(context, listen: false).setMessage(('Please enter your username'));
+      Provider.of<UserProvider>(context, listen: false)
+          .setMessage(('Please enter your username'));
     } else {
-      Provider.of<UserProvider>(context, listen: false).fetchUser(_controller.text).then((value) {
+      Provider.of<UserProvider>(context, listen: false)
+          .fetchUser(_controller.text)
+          .then((value) {
         if (value) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ArticlesPage()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => ArticlesPage()));
         }
       });
     }
@@ -43,16 +44,21 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.all(20),
           child: Column(
             children: <Widget>[
-              SizedBox(height: 100,),
+              SizedBox(
+                height: 100,
+              ),
               Container(
                 width: 80,
                 height: 80,
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
-                  backgroundImage: NetworkImage('https://images-tech-blog.s-yoshiki.com/wp-content/uploads/2020/02/01145213/qiita-icon-300x300.png'),
+                  backgroundImage: NetworkImage(
+                      'https://images-tech-blog.s-yoshiki.com/wp-content/uploads/2020/02/01145213/qiita-icon-300x300.png'),
                 ),
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               Text(
                 'QIITA',
                 style: TextStyle(
@@ -61,7 +67,9 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 150,),
+              SizedBox(
+                height: 150,
+              ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: BoxDecoration(
@@ -70,20 +78,29 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: TextField(
                   onChanged: (value) {
-                    Provider.of<UserProvider>(context, listen: false).setMessage(null);
+                    Provider.of<UserProvider>(context, listen: false)
+                        .setMessage(null);
                   },
                   controller: _controller,
-                  enabled: !Provider.of<UserProvider>(context, listen: false).isLoading(),
-                  style: TextStyle(color: Colors.white,),
+                  enabled: !Provider.of<UserProvider>(context, listen: false)
+                      .isLoading(),
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                   decoration: InputDecoration(
-                    errorText: Provider.of<UserProvider>(context, listen: false).getMessage(),
+                    errorText: Provider.of<UserProvider>(context, listen: false)
+                        .getMessage(),
                     border: InputBorder.none,
                     hintText: "Qiita username",
-                    hintStyle: TextStyle(color: Colors.black38,),
+                    hintStyle: TextStyle(
+                      color: Colors.black38,
+                    ),
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               MaterialButton(
                 padding: EdgeInsets.all(20),
                 color: Colors.black,
@@ -91,15 +108,26 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Align(
-                  child:
-                      Provider.of<UserProvider>(context, listen: false).isLoading() ?
-                      CircularProgressIndicator(backgroundColor: Colors.white, strokeWidth: 2,) :
-                      Text('See Articles', style: TextStyle(color: Colors.white,),),
-                ), onPressed: (){
+                  child: Provider.of<UserProvider>(context, listen: false)
+                          .isLoading()
+                      ? CircularProgressIndicator(
+                          backgroundColor: Colors.white,
+                          strokeWidth: 2,
+                        )
+                      : Text(
+                          'See Articles',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                ),
+                onPressed: () {
                   _getArticles();
-              },
+                },
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),

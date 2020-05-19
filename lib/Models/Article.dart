@@ -20,21 +20,21 @@ class Article {
 
   Article(
       {this.renderedBody,
-        this.body,
-        this.coediting,
-        this.commentsCount,
-        this.createdAt,
-        this.group,
-        this.id,
-        this.likesCount,
-        this.private,
-        this.reactionsCount,
-        this.tags,
-        this.title,
-        this.updatedAt,
-        this.url,
-        this.user,
-        this.pageViewsCount});
+      this.body,
+      this.coediting,
+      this.commentsCount,
+      this.createdAt,
+      this.group,
+      this.id,
+      this.likesCount,
+      this.private,
+      this.reactionsCount,
+      this.tags,
+      this.title,
+      this.updatedAt,
+      this.url,
+      this.user,
+      this.pageViewsCount});
 
   Article.fromJson(Map<String, dynamic> json) {
     renderedBody = json['rendered_body'];

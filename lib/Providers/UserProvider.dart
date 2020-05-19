@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:qiitaarticles/Models/User.dart';
 import 'package:qiitaarticles/Requests/QiitaRequest.dart';
 
-class UserProvider with ChangeNotifier{
+class UserProvider with ChangeNotifier {
   User user;
   String errorMessage;
   bool loading = false;
@@ -52,10 +52,7 @@ class UserProvider with ChangeNotifier{
     return errorMessage;
   }
 
-
   bool isUser() {
     return user != null ? true : false;
   }
-
-
 }

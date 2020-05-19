@@ -18,21 +18,21 @@ class User {
 
   User(
       {this.description,
-        this.facebookId,
-        this.followeesCount,
-        this.followersCount,
-        this.githubLoginName,
-        this.id,
-        this.itemsCount,
-        this.linkedinId,
-        this.location,
-        this.name,
-        this.organization,
-        this.permanentId,
-        this.profileImageUrl,
-        this.teamOnly,
-        this.twitterScreenName,
-        this.websiteUrl});
+      this.facebookId,
+      this.followeesCount,
+      this.followersCount,
+      this.githubLoginName,
+      this.id,
+      this.itemsCount,
+      this.linkedinId,
+      this.location,
+      this.name,
+      this.organization,
+      this.permanentId,
+      this.profileImageUrl,
+      this.teamOnly,
+      this.twitterScreenName,
+      this.websiteUrl});
 
   User.fromJson(Map<String, dynamic> json) {
     description = json['description'];
