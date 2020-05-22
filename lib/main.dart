@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   TextEditingController _controller = TextEditingController();
 
   void _getArticles() {
-    if (_controller.text == '') {
+    if (_controller.text.isEmpty) {
       Provider.of<UserNotifier>(context, listen: false)
           .setMessage(('Please enter your username'));
     } else {
