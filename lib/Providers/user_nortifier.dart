@@ -30,27 +30,21 @@ class UserNotifier with ChangeNotifier {
     notifyListeners();
   }
 
-  bool isLoading() {
-    return loading;
-  }
+  bool get isLoading => loading;
 
   void setUser(value) {
     user = value;
     notifyListeners();
   }
 
-  User getUser() {
-    return user;
-  }
+  User get getUser => user;
 
   void setMessage(value) {
     errorMessage = value;
     notifyListeners();
   }
 
-  String getMessage() {
-    return errorMessage;
-  }
+  String get getMessage => errorMessage;
 
   bool isUser() {
     return user != null ? true : false;

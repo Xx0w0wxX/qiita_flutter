@@ -3,13 +3,15 @@ import 'package:provider/provider.dart';
 import 'package:qiitaarticles/Pages/ArticlesPage.dart';
 import 'package:qiitaarticles/Providers/user_nortifier.dart';
 
-void main() => runApp(ChangeNotifierProvider<UserNotifier>(
+void main() => runApp(
+    ChangeNotifierProvider<UserNotifier>(
       create: (context) => UserNotifier(),
       child: MaterialApp(
         home: HomePage(),
         debugShowCheckedModeBanner: false,
       ),
-    ));
+    ),
+);
 
 class HomePage extends StatefulWidget {
   @override
@@ -83,13 +85,13 @@ class _HomePageState extends State<HomePage> {
                   },
                   controller: _controller,
                   enabled: !Provider.of<UserNotifier>(context, listen: false)
-                      .isLoading(),
+                      .isLoading,
                   style: TextStyle(
                     color: Colors.white,
                   ),
                   decoration: InputDecoration(
                     errorText: Provider.of<UserNotifier>(context, listen: false)
-                        .getMessage(),
+                        .getMessage,
                     border: InputBorder.none,
                     hintText: "Qiita username",
                     hintStyle: TextStyle(
@@ -109,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Align(
                   child: Provider.of<UserNotifier>(context, listen: false)
-                          .isLoading()
+                          .isLoading
                       ? CircularProgressIndicator(
                           backgroundColor: Colors.white,
                           strokeWidth: 2,

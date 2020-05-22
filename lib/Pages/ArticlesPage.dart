@@ -53,7 +53,7 @@ class _ArticlesPageState extends State<ArticlesPage>
     screenWidth = size.width;
 
     setState(() {
-      user = Provider.of<UserNotifier>(context, listen: false).getUser();
+      user = Provider.of<UserNotifier>(context, listen: false).getUser;
 
       Qiita(user.id).fetchUserArticles().then((data) {
         Iterable list = json.decode(data.body);
