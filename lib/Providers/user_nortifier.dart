@@ -34,16 +34,15 @@ class UserNotifier with ChangeNotifier {
     if (usernameTextEditingController.text.isEmpty) {
       setMessage(('Please enter your username'));
     } else {
-      fetchUser(usernameTextEditingController.text).then((value) {
-        if (value) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ArticlesPage(),
-            ),
-          );
-        }
-      });
+      await fetchUser(usernameTextEditingController.text);
+      if (isUser()) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ArticlesPage(),
+          ),
+        );
+      }
     }
   }
 
