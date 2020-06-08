@@ -22,21 +22,24 @@ class HomePage extends StatelessWidget {
         color: Colors.green,
         child: Padding(
           padding: EdgeInsets.all(20),
-          child: Column(
+          child: ListView(
             children: <Widget>[
               SizedBox(height: 100),
-              const SizedBox(
-                width: 80,
-                height: 80,
-                child: CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  backgroundImage: NetworkImage(
-                      'https://images-tech-blog.s-yoshiki.com/wp-content/uploads/2020/02/01145213/qiita-icon-300x300.png'),
+              const Center(
+                child: SizedBox(
+                  width: 80,
+                  height: 80,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: NetworkImage(
+                        'https://images-tech-blog.s-yoshiki.com/wp-content/uploads/2020/02/01145213/qiita-icon-300x300.png'),
+                  ),
                 ),
               ),
               SizedBox(height: 30),
               Text(
                 'QIITA',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 40,
