@@ -41,9 +41,7 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: Column(
             children: <Widget>[
-              SizedBox(
-                height: 100,
-              ),
+              SizedBox(height: 100),
               Container(
                 width: 80,
                 height: 80,
@@ -53,9 +51,7 @@ class HomePage extends StatelessWidget {
                       'https://images-tech-blog.s-yoshiki.com/wp-content/uploads/2020/02/01145213/qiita-icon-300x300.png'),
                 ),
               ),
-              SizedBox(
-                height: 30,
-              ),
+              SizedBox(height: 30),
               Text(
                 'QIITA',
                 style: TextStyle(
@@ -64,9 +60,7 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
-                height: 150,
-              ),
+              SizedBox(height: 150),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: BoxDecoration(
@@ -95,9 +89,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               MaterialButton(
                 padding: EdgeInsets.all(20),
                 color: Colors.black,
@@ -122,9 +114,7 @@ class HomePage extends StatelessWidget {
                   _getArticles(context: context);
                 },
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
             ],
           ),
         ),
