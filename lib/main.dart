@@ -13,20 +13,16 @@ void main() => runApp(
     ),
 );
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  TextEditingController _controller = TextEditingController();
-
-  void _getArticles() {
+class HomePage extends StatelessWidget {
+  void _getArticles({
+    @required BuildContext context,
+  }) {
     final userNotifier = Provider.of<UserNotifier>(context, listen: false);
-    if (_controller.text.isEmpty) {
+    final usernameTextEditingController = userNotifier.usernameTextEditingController;
+    if (usernameTextEditingController.text.isEmpty) {
       userNotifier.setMessage(('Please enter your username'));
     } else {
-      userNotifier.fetchUser(_controller.text).then((value) {
+      userNotifier.fetchUser(usernameTextEditingController.text).then((value) {
         if (value) {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => ArticlesPage()));
@@ -37,6 +33,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final userNotifier = Provider.of<UserNotifier>(context, listen: false);
     return Scaffold(
       body: Container(
         color: Colors.green,
@@ -81,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                     Provider.of<UserNotifier>(context, listen: false)
                         .setMessage(null);
                   },
-                  controller: _controller,
+                  controller: userNotifier.usernameTextEditingController,
                   enabled: !Provider.of<UserNotifier>(context, listen: false)
                       .isLoading,
                   style: TextStyle(
@@ -122,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                 ),
                 onPressed: () {
-                  _getArticles();
+                  _getArticles(context: context);
                 },
               ),
               SizedBox(

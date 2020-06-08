@@ -5,6 +5,8 @@ import 'package:qiitaarticles/Models/User.dart';
 import 'package:qiitaarticles/Requests/QiitaRequest.dart';
 
 class UserNotifier with ChangeNotifier {
+  final TextEditingController usernameTextEditingController = TextEditingController();
+
   User user;
   String errorMessage;
   bool loading = false;
