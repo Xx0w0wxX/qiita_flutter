@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               SizedBox(height: 100),
-              Container(
+              const SizedBox(
                 width: 80,
                 height: 80,
                 child: CircleAvatar(
