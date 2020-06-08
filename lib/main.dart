@@ -14,23 +14,6 @@ void main() => runApp(
 );
 
 class HomePage extends StatelessWidget {
-  void _getArticles({
-    @required BuildContext context,
-  }) {
-    final userNotifier = Provider.of<UserNotifier>(context, listen: false);
-    final usernameTextEditingController = userNotifier.usernameTextEditingController;
-    if (usernameTextEditingController.text.isEmpty) {
-      userNotifier.setMessage(('Please enter your username'));
-    } else {
-      userNotifier.fetchUser(usernameTextEditingController.text).then((value) {
-        if (value) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ArticlesPage()));
-        }
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final userNotifier = Provider.of<UserNotifier>(context, listen: false);
@@ -111,7 +94,7 @@ class HomePage extends StatelessWidget {
                         ),
                 ),
                 onPressed: () {
-                  _getArticles(context: context);
+                  userNotifier.getArticles(context: context);
                 },
               ),
               SizedBox(height: 20),

@@ -1,7 +1,8 @@
 import 'dart:convert';
-
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:qiitaarticles/Models/User.dart';
+import 'package:qiitaarticles/Pages/ArticlesPage.dart';
 import 'package:qiitaarticles/Requests/QiitaRequest.dart';
 
 class UserNotifier with ChangeNotifier {
@@ -25,6 +26,25 @@ class UserNotifier with ChangeNotifier {
     });
 
     return isUser();
+  }
+
+  Future<void> getArticles({
+    @required BuildContext context,
+  }) async {
+    if (usernameTextEditingController.text.isEmpty) {
+      setMessage(('Please enter your username'));
+    } else {
+      fetchUser(usernameTextEditingController.text).then((value) {
+        if (value) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ArticlesPage(),
+            ),
+          );
+        }
+      });
+    }
   }
 
   void setLoading(value) {
