@@ -25,7 +25,7 @@ class UserNotifier with ChangeNotifier {
       }
     });
 
-    return isUser();
+    return _isUser();
   }
 
   Future<void> getArticles({
@@ -35,7 +35,7 @@ class UserNotifier with ChangeNotifier {
       setMessage(('Please enter your username'));
     } else {
       await fetchUser(usernameTextEditingController.text);
-      if (isUser()) {
+      if (_isUser()) {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -67,7 +67,7 @@ class UserNotifier with ChangeNotifier {
 
   String get getMessage => errorMessage;
 
-  bool isUser() {
+  bool _isUser() {
     return user != null ? true : false;
   }
 }
