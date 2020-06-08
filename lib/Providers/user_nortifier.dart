@@ -13,12 +13,12 @@ class UserNotifier with ChangeNotifier {
   bool loading = false;
 
   Future<bool> fetchUser(username) async {
-    setLoading(true);
+    _setLoading(true);
 
     await Qiita(username).fetchUser().then((data) {
-      setLoading(false);
+      _setLoading(false);
       if (data.statusCode == 200) {
-        setUser(User.fromJson(json.decode(data.body)));
+        _setUser(User.fromJson(json.decode(data.body)));
       } else {
         Map<String, dynamic> result = json.decode(data.body);
         setMessage(result['message']);
@@ -46,14 +46,14 @@ class UserNotifier with ChangeNotifier {
     }
   }
 
-  void setLoading(value) {
+  void _setLoading(value) {
     loading = value;
     notifyListeners();
   }
 
   bool get isLoading => loading;
 
-  void setUser(value) {
+  void _setUser(value) {
     user = value;
     notifyListeners();
   }
