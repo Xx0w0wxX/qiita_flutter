@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qiitaarticles/Models/User.dart';
 import 'package:qiitaarticles/Pages/ArticlesPage.dart';
 import 'package:qiitaarticles/Providers/user_nortifier.dart';
 
@@ -55,18 +56,15 @@ class HomePage extends StatelessWidget {
                 ),
                 child: TextField(
                   onChanged: (value) {
-                    Provider.of<UserNotifier>(context, listen: false)
-                        .setMessage(null);
+                    userNotifier.setMessage(null);
                   },
                   controller: userNotifier.usernameTextEditingController,
-                  enabled: !Provider.of<UserNotifier>(context, listen: false)
-                      .isLoading,
+                  enabled: !context.select((UserNotifier n) => n.isLoading),
                   style: TextStyle(
                     color: Colors.white,
                   ),
                   decoration: InputDecoration(
-                    errorText: Provider.of<UserNotifier>(context, listen: false)
-                        .getMessage,
+                    errorText: context.select((UserNotifier n) => n.getMessage),
                     border: InputBorder.none,
                     hintText: "Qiita username",
                     hintStyle: TextStyle(
@@ -83,8 +81,7 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Align(
-                  child: Provider.of<UserNotifier>(context, listen: false)
-                          .isLoading
+                  child: context.select((UserNotifier n) => n.isLoading)
                       ? CircularProgressIndicator(
                           backgroundColor: Colors.white,
                           strokeWidth: 2,
