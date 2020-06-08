@@ -22,13 +22,11 @@ class _HomePageState extends State<HomePage> {
   TextEditingController _controller = TextEditingController();
 
   void _getArticles() {
+    final userNotifier = Provider.of<UserNotifier>(context, listen: false);
     if (_controller.text.isEmpty) {
-      Provider.of<UserNotifier>(context, listen: false)
-          .setMessage(('Please enter your username'));
+      userNotifier.setMessage(('Please enter your username'));
     } else {
-      Provider.of<UserNotifier>(context, listen: false)
-          .fetchUser(_controller.text)
-          .then((value) {
+      userNotifier.fetchUser(_controller.text).then((value) {
         if (value) {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => ArticlesPage()));
